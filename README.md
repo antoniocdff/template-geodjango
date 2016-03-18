@@ -75,3 +75,27 @@ django-admin startproject foo --template=https://github.com/sigma-geosistemas/te
 This will download the template from github and install create the following structure in your ```~/projetos``` folder:
 
 ![Template Structure](docs/img/tree.png "Template Structure")
+
+# Create Server (in Debian/Ubuntu/Mint)
+
+1 - Server
+
+```bash
+sudo apt-get install virtualenv git postgresql postgis libpq-dev gcc python-pycopg2 python-dev python-setuptools pgadmin3
+cd ~
+mkdir projetos
+mkdir projetos/.virtualenvs
+git config --global user.email "EMAIL@consultoriasigma.com.br"
+
+2 - Database
+
+```bash
+sudo su
+passwd postgres
+su - postgres
+psql -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+exit
+gedit /etc/rc.local 
+	export PGUSER="postgres"
+	export PGPASS="postgres"
+
